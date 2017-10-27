@@ -10,7 +10,6 @@ export default class LoginPage extends React.Component{
       clientId: '0oaclemy5iVSL0XpO0h7',
       redirectUri: 'http://localhost:3000'
     });
-
     this.showLogin = this.showLogin.bind(this);
     this.logout = this.logout.bind(this);
   }

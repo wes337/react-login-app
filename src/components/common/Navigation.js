@@ -16,7 +16,7 @@ export default class Navigation extends React.Component{
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link to="/" className="navbar-brand">OktaReact</Link>
+            <Link to="/" className="navbar-brand">Wes Moses</Link>
           </div>
           <div className="navbar-collapse collapse">
             <ul className="nav navbar-nav navbar-right smooth-scroll">

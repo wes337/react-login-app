@@ -1,7 +1,7 @@
 {
-  "name": "react-okta-sample",
+  "name": "react-login-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A React application with user authentication via okta.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --inline",
