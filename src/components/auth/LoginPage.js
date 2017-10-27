@@ -4,20 +4,19 @@ import OktaSignIn from '@okta/okta-signin-widget';
 export default class LoginPage extends React.Component{
   constructor(){
     super();
+    this.state = { user: null };
     this.widget = new OktaSignIn({
       baseUrl: 'https://dev-359704.oktapreview.com',
       clientId: '0oaclemy5iVSL0XpO0h7',
-      redirectUri: 'http://localhost:3000',
-      authParams: {
-        responseType: 'id_token'
-      }
+      redirectUri: 'http://localhost:3000'
     });
-    
+
     this.showLogin = this.showLogin.bind(this);
     this.logout = this.logout.bind(this);
   }
 
   componentDidMount(){
+    console.log('componentDidMount...');
     this.widget.session.get((response) => {
       if(response.status !== 'INACTIVE'){
         this.setState({user:response.login});
@@ -28,10 +27,12 @@ export default class LoginPage extends React.Component{
   }
 
   showLogin(){
+    console.log('showLogin...')
     Backbone.history.stop();
-    this.widget.renderEl({el:this.loginContainer},
-      (response) => {
+    this.widget.renderEl({el:this.loginContainer}, 
+      (response) => {        
         this.setState({user: response.claims.email});
+        this.widget.remove();
       },
       (err) => {
         console.log(err);
@@ -40,6 +41,7 @@ export default class LoginPage extends React.Component{
   }
 
   logout(){
+    console.log('logout...');
     this.widget.signOut(() => {
       this.setState({user: null});
       this.showLogin();
@@ -47,6 +49,7 @@ export default class LoginPage extends React.Component{
   }
 
   render(){
+    console.log('rendering...');
     return(
       <div>
         {this.state.user ? (
